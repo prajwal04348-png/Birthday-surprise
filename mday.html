@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mother's Day Nature Celebration</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body,html{height:100%;overflow:hidden;}
+
+.slide{
+    position:absolute;
+    height:100%;
+    width:100%;
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    opacity:0;
+    transform:scale(1.1);
+    transition:all 1.2s ease-in-out;
+}
+
+.slide.active{
+    opacity:1;
+    transform:scale(1);
+    z-index:1;
+}
+
+.overlay{
+    background:rgba(0,0,0,0.45);
+    padding:50px;
+    border-radius:20px;
+    max-width:900px;
+    animation:fadeIn 2s ease;
+}
+
+h1{
+    font-size:3em;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:1.5em;
+    line-height:1.6;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(30px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+.nav{
+    position:absolute;
+    bottom:30px;
+    width:100%;
+    text-align:center;
+}
+
+button{
+    padding:12px 25px;
+    margin:0 10px;
+    border:none;
+    border-radius:30px;
+    font-size:1em;
+    cursor:pointer;
+    background:#ff6f91;
+    color:white;
+    transition:0.3s;
+}
+button:hover{
+    background:#ff3f6c;
+    transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<!-- Slides with Nature Images -->
+
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1490750967868-88aa4486c946');">
+    <div class="overlay">
+        <h1>Happy Mother's Day 🌸</h1>
+        <p>Like blooming flowers in a peaceful garden, your love fills our life with fragrance, color, and happiness.</p>
+    </div>
+</div>
+
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6');">
+    <div class="overlay">
+        <h1>Your Love is Nature's Beauty 🦋</h1>
+        <p>Just like butterflies bring life to flowers, you bring joy and light to our hearts every day.</p>
+    </div>
+</div>
+
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e');">
+    <div class="overlay">
+        <h1>Strong Like Trees 🌳</h1>
+        <p>Your strength supports us like mighty trees that stand tall through every season.</p>
+    </div>
+</div>
+
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee');">
+    <div class="overlay">
+        <h1>Thank You, Mom 💖</h1>
+        <p>For every sacrifice, every smile, and endless care — today we celebrate the wonderful soul you are.</p>
+    </div>
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+    <button onclick="prevSlide()">⟵ Back</button>
+    <button onclick="nextSlide()">Next ➜</button>
+</div>
+
+<script>
+let slides=document.querySelectorAll(".slide");
+let index=0;
+
+function showSlide(i){
+    slides.forEach(s=>s.classList.remove("active"));
+    slides[i].classList.add("active");
+}
+
+function nextSlide(){
+    index=(index+1)%slides.length;
+    showSlide(index);
+}
+
+function prevSlide(){
+    index=(index-1+slides.length)%slides.length;
+    showSlide(index);
+}
+
+/* Auto slide every 8 seconds */
+setInterval(nextSlide,8000);
+
+/* Keyboard control */
+document.addEventListener("keydown",(e)=>{
+    if(e.key==="ArrowRight") nextSlide();
+    if(e.key==="ArrowLeft") prevSlide();
+});
+</script>
+
+</body>
+</html>
